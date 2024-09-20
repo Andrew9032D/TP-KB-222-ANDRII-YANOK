@@ -16,4 +16,4 @@ print(text.upper())  # upper всі літери з великої
 
 
 text = "heSSSSSlo aEFSdri"
-print(text.lower())  
+print(text.lower())  # lower всі літери пишуться з маленької 
