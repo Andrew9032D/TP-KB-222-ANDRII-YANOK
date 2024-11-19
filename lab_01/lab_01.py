@@ -53,10 +53,11 @@ def deleteElement():
 
 def updateElement():
     name = input("Please enter name to be updated: ")
+    found = False
     for item in list:
         if name == item["name"]:
-             # Оновлюємо поля одне за одним
-             # f для використання поточного елементу
+            found = True
+            # Оновлюємо поля одне за одним
             new_phone = input(f"Enter new phone (current: {item['phone']}): ") or item['phone']
             new_faculty = input(f"Enter new faculty (current: {item['faculty']}): ") or item['faculty']
             new_address = input(f"Enter new address (current: {item['address']}): ") or item['address']
@@ -66,8 +67,17 @@ def updateElement():
             item['address'] = new_address
             print(f"Information updated for {name}")
             return
-    print(f"Student {name} not found.")
-    return
+    if not found:
+        # Якщо студента не знайдено, додаємо новий запис
+        print(f"Student {name} not found. Adding new student.")
+        new_phone = input("Enter phone: ")
+        new_faculty = input("Enter faculty: ")
+        new_address = input("Enter address: ")
+        new_item = {"name": name, "phone": new_phone, "faculty": new_faculty, "address": new_address}
+        # Додаємо новий елемент в список
+        list.append(new_item)
+        print(f"New student {name} added.")
+
 # додав функцію update
 def main():
     while True:
